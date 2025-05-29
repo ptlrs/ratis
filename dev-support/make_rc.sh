@@ -25,6 +25,7 @@
 # close the maven repos.  Call a vote.
 #
 # Presumes your settings.xml all set up so can sign artifacts published to mvn, etc.
+set -x
 set -e
 # Set mvn and mvnopts
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -88,7 +89,7 @@ fi
 
 
 mvnFun() {
-  MAVEN_OPTS="${mvnopts}" ${MVN} -Dmaven.repo.local="${repodir}" "$@"
+  MAVEN_OPTS="${mvnopts}" ${MVN} -X -Dmaven.repo.local="${repodir}" "$@"
 }
 
 1-prepare-src() {
